@@ -17,3 +17,38 @@ Content-Type: application/json
     "description": "Cozy 3-bedroom home near the city center with a view of the ridge.",
     "listingDate": "2026-09-22"
 }
+
+### Update a property - replace the id with a real one from your database
+PUT http://localhost:8080/properties/6ab1f9f9595bb86878172885
+Content-Type: application/json
+
+{
+    "address": "45 Rivera Avenue, Quezon City",
+    "price": 3350000,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "squareFeet": 850,
+    "status": "Sold",
+    "description": "Compact 2-bedroom condo unit close to public transit and shopping. Sale finalized.",
+    "listingDate": "2026-09-15"
+}
+
+###
+
+### PUT - missing required field (should return 400)
+PUT http://localhost:8080/properties/6ab1f9f9595bb86878172885
+Content-Type: application/json
+
+{
+    "address": "Incomplete update"
+}
+
+###
+
+### Delete a property - replace the id with a real one from your database
+DELETE http://localhost:8080/properties/6ab1f7e3fcda0d5c8d905d3b
+
+###
+
+### GET by id after delete - confirms it's actually gone (should return 404)
+GET http://localhost:8080/properties/6ab1f7e3fcda0d5c8d905d3b

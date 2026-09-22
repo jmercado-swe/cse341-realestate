@@ -5,8 +5,8 @@ const doc = {
         title: 'Real Estate Listings API',
         description: 'API documentation for the Real Estate Listings project (CSE 341 Week 3-4 project)',
     },
-    host: 'localhost:8080',
-    schemes: ['http'],
+    host: 'cse341-realestate-nqk3.onrender.com',
+    schemes: ['https'],
 };
 
 const outputFile = './swagger.json';
