@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const propertiesController = require('../controllers/propertiesController');
+const { isAuthenticated } = require('../middleware/auth');
 
 router.get('/', propertiesController.getAllProperties);
 router.get('/:id', propertiesController.getPropertyById);
-router.post('/', propertiesController.createProperty);
-router.put('/:id', /* #swagger.parameters['body'] = {
+router.post('/', isAuthenticated, propertiesController.createProperty);
+router.put('/:id', isAuthenticated, /* #swagger.parameters['body'] = {
     in: 'body',
     required: true,
     schema: {
@@ -19,6 +20,6 @@ router.put('/:id', /* #swagger.parameters['body'] = {
         listingDate: 'string'
     }
 } */ propertiesController.updateProperty);
-router.delete('/:id', propertiesController.deleteProperty);
+router.delete('/:id', isAuthenticated, propertiesController.deleteProperty);
 
 module.exports = router;
